@@ -58,11 +58,9 @@ exports.Severity = Severity
 var Facility = {} // to much
 
 function parsePRI(raw) {
-    // PRI means Priority, includes Facility and Severity
-    // e.g. 10110111 =  10110: facility 111: severity
     var binary = (~~raw).toString(2)
-    var facility = parseInt(binary.substr(binary.length - 3), 2)
-    var severity = parseInt(binary.substring(0, binary.length - 3), 2)
+    var severity = parseInt(binary.substr(binary.length - 3), 2)
+    var facility = parseInt(binary.substring(0, binary.length - 3), 2) || 0
     return [facility, severity]
 }
 
